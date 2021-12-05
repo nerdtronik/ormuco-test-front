@@ -11,7 +11,6 @@
 </template>
 
 <script>
-import { config } from "@/fn.js";
 import axios from 'axios';
 export default {
   name: "Keypairs",
@@ -28,7 +27,7 @@ export default {
   methods: {
     getKeypairs() {
       console.log(process.env.FLASK_SERVICE)
-      axios.get(`http://37.114.85.140:5000/keypairs`, config).then(r => {
+      axios.get(`http://37.114.85.140:5000/keypairs`, this.$store.state.config).then(r => {
         if (r.data.data !== undefined) {
           this.options = r.data.data.map((item) => {
             return {

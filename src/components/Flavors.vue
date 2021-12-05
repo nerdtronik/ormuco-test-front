@@ -11,7 +11,6 @@
 </template>
 
 <script>
-import { config } from "@/fn.js";
 import axios from 'axios';
 export default {
   name: "Flavors",
@@ -27,7 +26,7 @@ export default {
   emits: ["update:selected"],
   methods: {
     getFlavors() {
-      axios.get(`http://37.114.85.140:5000/flavors`, config).then(r => {
+      axios.get(`http://37.114.85.140:5000/flavors`, this.$store.state.config).then(r => {
         if (r.data.data !== undefined) {
           this.options = r.data.data.map((item) => {
             return {
@@ -53,6 +52,7 @@ export default {
 <style lang="scss" scoped>
 div {
   text-align: left;
+  width: 100%;
 }
 h5 {
   margin: 0;

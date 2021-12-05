@@ -11,7 +11,6 @@
 </template>
 
 <script>
-import { config } from "@/fn.js";
 import axios from 'axios';
 export default {
   name: "Images",
@@ -27,7 +26,7 @@ export default {
   emits: ["update:selected"],
   methods: {
     getImages() {
-      axios.get(`http://37.114.85.140:5000/images`, config).then(r => {
+      axios.get(`http://37.114.85.140:5000/images`, this.$store.state.config).then(r => {
         if (r.data.data !== undefined) {
           this.options = r.data.data.map((item) => {
             return {
